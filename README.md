@@ -12,6 +12,7 @@ $ npm install lognana
 
 ## Usage
 
+__`myfile.js`__
 ```js
 const Log = require( 'lognana' );
 
@@ -31,6 +32,12 @@ Log.ok( 'hello world' );
 Log.verbose( 'hello world' );
 ```
 
+__In the terminal:__
+```shell
+node myfile.js --verbose
+```
+
+__Output:__
 <p align="center">
 	<img alt="Example output of the Log function" src="lognana.png" width="300px"/>
 </p>
