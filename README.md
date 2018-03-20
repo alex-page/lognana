@@ -19,7 +19,7 @@ Log.emoji = '🍌';
 
 // Check if the user is in verbose mode
 if( process.argv.includes( '-v' ) || process.argv.includes( '--verbose' ) ) {
-	Log.verboseMode = true;
+  Log.verboseMode = true;
 };
 
 
