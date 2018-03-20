@@ -1,6 +1,6 @@
-# lognana
+# 🍌Lognana [![Build Status](https://travis-ci.org/alex-page/lognana.svg?branch=master)](https://travis-ci.org/alex-page/lognana)
 
-> 🍌 An emoji fueled log system with zero dependencies
+> An emoji fueled log system with zero dependencies
 
 
 ## Install
