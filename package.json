@@ -1,0 +1,44 @@
+{
+	"name": "lognana",
+	"version": "1.0.0",
+	"description": "A simple log system with zero dependencies",
+	"main": "index.js",
+	"scripts": {
+		"prepublish": "npm run test",
+		"test": "jest"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://alex-page@github.com/alex-page/lognana.git"
+	},
+	"keywords": [
+		"log",
+		"pretty",
+		"zerodependency"
+	],
+	"author": {
+		"name": "Alex Page",
+		"email": "alex@alexpage.com.au",
+		"url": "http://alexpage.com.au"
+	},
+	"contributors": [
+		{
+			"name": "Dominik Wilkowski",
+			"email": "hi@dominik-wilkowski.com",
+			"url": "https://dominik-wilkowski.com/"
+		},
+		{
+			"name": "Alex Page",
+			"email": "alex@alexpage.com.au",
+			"url": "http://alexpage.com.au"
+		}
+	],
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/alex-page/lognana/issues"
+	},
+	"homepage": "https://github.com/alex-page/lognana#readme",
+	"devDependencies": {
+		"jest": "^22.4.2"
+	}
+}
