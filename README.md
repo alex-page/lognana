@@ -31,7 +31,9 @@ Log.ok( 'hello world' );
 Log.verbose( 'hello world' );
 ```
 
-![Example output of the Log function](lognana.png)
+<p align="center">
+	<img alt="Example output of the Log function" src="lognana.png" width="300px"/>
+</p>
 
 
 
