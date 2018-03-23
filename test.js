@@ -125,3 +125,19 @@ test( 'Log.verbose: should should be formatted correctly', () => {
 	expect( console.info.mock.calls[0][0] ).toBe( ` 📢 🍌        \u001B[90mVERBOSE: verbose test\u001b[39m` );
 });
 
+
+test( 'Styles: should style text', () => {
+
+	expect( Log.black(   'potato' ) ).toBe( '\u001B[30mpotato\u001b[39m' );
+	expect( Log.red(     'potato' ) ).toBe( '\u001B[31mpotato\u001b[39m' );
+	expect( Log.green(   'potato' ) ).toBe( '\u001B[32mpotato\u001b[39m' );
+	expect( Log.yellow(  'potato' ) ).toBe( '\u001B[33mpotato\u001b[39m' );
+	expect( Log.blue(    'potato' ) ).toBe( '\u001B[34mpotato\u001b[39m' );
+	expect( Log.magenta( 'potato' ) ).toBe( '\u001B[35mpotato\u001b[39m' );
+	expect( Log.cyan(    'potato' ) ).toBe( '\u001B[36mpotato\u001b[39m' );
+	expect( Log.white(   'potato' ) ).toBe( '\u001B[37mpotato\u001b[39m' );
+	expect( Log.gray(    'potato' ) ).toBe( '\u001B[90mpotato\u001b[39m' );
+	expect( Log.bold(    'potato' ) ).toBe( '\u001B[1mpotato\u001b[22m' );
+});
+
+

@@ -2,13 +2,37 @@
  *
  * index.js
  *
- * Style - Returning ansi escape color codes
- * Log   - A logging object for logging prettiness
+ * Parse     - Parse ansi code while making sure we can nest colors
+ * Style     - Returning ansi escape color codes
+ * Log       - A logging object for logging prettiness
+ * AddStyles - Add the styles to the log function
  *
  **************************************************************************************************************************************************************/
 
 
 'use strict';
+
+
+/**
+ * Parse ansi code while making sure we can nest colors
+ * Credit to: https://github.com/chalk/ansi-styles
+ *
+ * @param   {string} text  - The text to be enclosed with an ansi escape string
+ * @param   {string} start - The color start code, defaults to the standard color reset code 39m
+ * @param   {string} end   - The color end code
+ *
+ * @returns {string}       - The escaped text
+ */
+const Parse = ( text, start, end = `39m` ) => {
+	if( text !== undefined ) {
+		const replace = new RegExp( `\\u001b\\[${ end }`, 'g' ); // find any resets so we can nest styles
+
+		return `\u001B[${ start }${ text.toString().replace( replace, `\u001B[${ start }` ) }\u001b[${ end }`;
+	}
+	else {
+		return ``;
+	}
+};
 
 
 /**
@@ -18,27 +42,6 @@
  * @type {Object}
  */
 const Style = {
-
-	/**
-	 * Parse ansi code while making sure we can nest colors
-	 *
-	 * @param   {string} text  - The text to be enclosed with an ansi escape string
-	 * @param   {string} start - The color start code, defaults to the standard color reset code 39m
-	 * @param   {string} end   - The color end code
-	 *
-	 * @returns {string}       - The escaped text
-	 */
-	parse: ( text, start, end = `39m` ) => {
-		if( text !== undefined ) {
-			const replace = new RegExp( `\\u001b\\[${ end }`, 'g' ); // find any resets so we can nest styles
-
-			return `\u001B[${ start }${ text.toString().replace( replace, `\u001B[${ start }` ) }\u001b[${ end }`;
-		}
-		else {
-			return ``;
-		}
-	},
-
 	/**
 	 * Style a string with ansi escape codes
 	 *
@@ -47,17 +50,16 @@ const Style = {
 	 * @returns {string}      - The string with opening and closing ansi escape color codes
 	 */
 
-	red:     text => Style.parse( text, `31m` ),
-	green:   text => Style.parse( text, `32m` ),
-	gray:    text => Style.parse( text, `90m` ),
-	bold:    text => Style.parse( text, `1m`, `22m` ),
-
-	// black:   text => Style.parse( text, `30m` ),
-	// yellow:  text => Style.parse( text, `33m` ),
-	// blue:    text => Style.parse( text, `34m` ),
-	// magenta: text => Style.parse( text, `35m` ),
-	// cyan:    text => Style.parse( text, `36m` ),
-	// white:   text => Style.parse( text, `37m` ),
+	black:   text => Parse( text, `30m` ),
+	red:     text => Parse( text, `31m` ),
+	green:   text => Parse( text, `32m` ),
+	yellow:  text => Parse( text, `33m` ),
+	blue:    text => Parse( text, `34m` ),
+	magenta: text => Parse( text, `35m` ),
+	cyan:    text => Parse( text, `36m` ),
+	white:   text => Parse( text, `37m` ),
+	gray:    text => Parse( text, `90m` ),
+	bold:    text => Parse( text, `1m`, `22m` ),
 };
 
 
@@ -142,6 +144,21 @@ const Log = {
 		}
 	},
 };
+
+
+/**
+ * Add the styles to the Log function
+ *
+ * @param  {array} styles - All of the styles
+ */
+const AddStyles = ( styles ) => {
+	styles.map( style => {
+		Log[ style ] = Style[ style ];
+	});
+};
+
+
+AddStyles( Object.keys( Style ) );
 
 
 module.exports = Log;
