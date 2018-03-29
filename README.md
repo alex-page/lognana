@@ -5,7 +5,7 @@
 ---
 
 ## ‼️This is now deprecated ‼️
-Please use [`indent-log`](https://github.com/dominikwilkowski/indent-log) instead.
+Please use [`indent-log`](https://github.com/dominikwilkowski/log) instead.
 
 ---
 
