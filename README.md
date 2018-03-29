@@ -3,6 +3,11 @@
 > An emoji fueled log system with zero dependencies
 
 
+## ‼️This is now deprecated
+Please use [`indent-log`](https://github.com/dominikwilkowski/indent-log) instead.
+
+---
+
 ## Install
 
 ```console
